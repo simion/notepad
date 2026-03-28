@@ -1,4 +1,5 @@
 import { useCallback } from 'react';
+import MarkdownPreview from './MarkdownPreview';
 
 function formatDate(iso) {
   const date = new Date(iso);
@@ -37,7 +38,9 @@ export default function NoteItem({ note, onEdit, onDelete }) {
         </div>
       </div>
       {note.content && (
-        <p className="note-item-content">{note.content}</p>
+        <div className="note-item-content">
+          <MarkdownPreview content={note.content} />
+        </div>
       )}
       <span className="note-item-date">{formatDate(note.updatedAt)}</span>
     </div>
